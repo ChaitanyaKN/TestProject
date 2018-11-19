@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <h3>How would you like to add recepients:</h3>
+    <mat-radio-group [(ngModel)]="uploadOption">
+      <mat-radio-button value='0'>
+        Upload a file
+      </mat-radio-button>
+      <mat-radio-button value='1'>
+        Search Manually
+      </mat-radio-button>
+    </mat-radio-group>
+    <div *ngIf='uploadOption==0'>
+      <app-message-edit-recipient-dragdrop></app-message-edit-recipient-dragdrop>
+    </div>
+    <div *ngIf='uploadOption== 1'>
+  <app-message-edit-recipient-filters></app-message-edit-recipient-filters>
+  <app-message-edit-recipient-table></app-message-edit-recipient-table>
+  </div>  
+</div>
+</div>

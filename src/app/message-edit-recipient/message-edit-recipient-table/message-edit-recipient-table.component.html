@@ -1,0 +1,72 @@
+<div style="float: right">
+  <input type="file" id="bulkupload">
+  <button class="btn btn-primary">Bulk Upload</button>
+</div>
+<div>
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  
+<table mat-table [dataSource] = 'dataSource' class="mat-elevation-z8">
+  <ng-container matColumnDef="Member ID">
+    <th mat-header-cell *matHeaderCellDef> Member ID </th>
+    <td mat-cell *matCellDef="let member"> {{member.memberID}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Member Name">
+    <th mat-header-cell *matHeaderCellDef> Member Name</th>
+    <td mat-cell *matCellDef="let member"> {{member.memberName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Entitlement Groups">
+    <th mat-header-cell *matHeaderCellDef> EGs </th>
+    <td mat-cell *matCellDef="let member"> {{member.EGs}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Account number">
+    <th mat-header-cell *matHeaderCellDef> Account number </th>
+    <td mat-cell *matCellDef="let member"> {{member.accountNumber}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="Portfolio Number">
+    <th mat-header-cell *matHeaderCellDef> Account number </th>
+    <td mat-cell *matCellDef="let member"> {{member.portfolioNumber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Relationship Id">
+    <th mat-header-cell *matHeaderCellDef> Rel. ID </th>
+    <td mat-cell *matCellDef="let member"> {{member.relationshipID}} </td>
+  </ng-container>
+
+  
+  <ng-container matColumnDef="Attachments">
+      <th mat-header-cell *matHeaderCellDef> Attachments </th>
+      <td mat-cell *matCellDef="let member"> 
+      <p>{{member.Attachments.join()}}</p>
+      </td>
+    </ng-container>
+
+  <ng-container matColumnDef="Add files">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let member" > 
+        <form>
+          <div>
+            <input type="file" id="file" name="file" value='myfiles' multiple>
+          </div>
+          <div>
+            <button (click)='addFiles(member,file.files)'>Submit</button>
+          </div>
+         </form>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="bUpload">
+      <th mat-header-cell *matHeaderCellDef> Bulk Upload </th>
+      <td mat-cell *matCellDef="let member"> 
+      <input type="checkbox">  
+      </td>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+</div>
